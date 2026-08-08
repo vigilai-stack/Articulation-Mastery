@@ -13,7 +13,9 @@ import Progress from "./pages/Progress";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 import LearnerReport from "./pages/LearnerReport";
+import Achievements from "./pages/Achievements";
 import DashboardLayout from "./components/DashboardLayout";
+import ThemeToggle from "./components/ThemeToggle";
 
 function Workspace({ children }: { children: React.ReactNode }) {
   return <DashboardLayout>{children}</DashboardLayout>;
@@ -29,6 +31,7 @@ function Router() {
       <Route path={"/library"}>{() => <Workspace><Library /></Workspace>}</Route>
       <Route path={"/lessons/:day"}>{params => <Workspace><Lesson day={Number(params.day)} /></Workspace>}</Route>
       <Route path={"/progress"}>{() => <Workspace><Progress /></Workspace>}</Route>
+      <Route path={"/achievements"}>{() => <Workspace><Achievements /></Workspace>}</Route>
       <Route path={"/reports"}>{() => <Workspace><Reports /></Workspace>}</Route>
       <Route path={"/reports/:learnerId"}>{params => <Workspace><LearnerReport learnerId={Number(params.learnerId)} /></Workspace>}</Route>
       <Route path={"/settings"}>{() => <Workspace><Settings /></Workspace>}</Route>
@@ -49,10 +52,11 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="dark"
-        // switchable
+        switchable
       >
         <TooltipProvider>
           <Toaster />
+          <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6"><ThemeToggle compact /></div>
           <Router />
         </TooltipProvider>
       </ThemeProvider>

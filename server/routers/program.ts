@@ -19,6 +19,7 @@ import { createHeartbeatJob, deleteHeartbeatJob } from "../_core/heartbeat";
 import { storagePut } from "../storage";
 import { protectedProcedure, router } from "../_core/trpc";
 import { COOKIE_NAME } from "../../shared/const";
+import { awardPracticeProgression, getEngagementSnapshot } from "../engagement";
 
 const profileInput = z.object({
   goals: z.array(z.string().trim().min(2).max(100)).min(1).max(5),
@@ -284,6 +285,7 @@ export const programRouter = router({
       mostRecent,
       recentSessions: sessions.slice(0, 7),
       weeklyTrend: weeklyScoreTrend(sessions),
+      engagement: await getEngagementSnapshot(ctx.user.id),
     };
   }),
   submitPractice: protectedProcedure
@@ -328,8 +330,10 @@ export const programRouter = router({
         feedbackJson: feedback,
         completedAt: new Date(),
       });
-      return { sessionId: session.insertId, feedback, transcript };
+      const engagement = await awardPracticeProgression(ctx.user.id, session.insertId);
+      return { sessionId: session.insertId, feedback, transcript, engagement };
     }),
+  engagement: protectedProcedure.query(async ({ ctx }) => getEngagementSnapshot(ctx.user.id)),
   journal: protectedProcedure.query(async ({ ctx }) => {
     const db = await requireDb();
     return db.select().from(journalEntries).where(eq(journalEntries.userId, ctx.user.id)).orderBy(desc(journalEntries.createdAt));

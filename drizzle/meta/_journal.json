@@ -15,6 +15,13 @@
       "when": 1786154657993,
       "tag": "0001_silent_gwen_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1786155700464,
+      "tag": "0002_fair_shard",
+      "breakpoints": true
     }
   ]
 }

@@ -94,3 +94,28 @@ export const notificationEvents = mysqlTable("notification_events", {
   readAt: timestamp("readAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
+
+export const userEngagement = mysqlTable("user_engagement", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  totalPoints: int("totalPoints").default(0).notNull(),
+  currentLevel: int("currentLevel").default(1).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const userAchievements = mysqlTable("user_achievements", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  achievementKey: varchar("achievementKey", { length: 100 }).notNull(),
+  unlockedAt: timestamp("unlockedAt").defaultNow().notNull(),
+}, table => [uniqueIndex("user_achievement_unique").on(table.userId, table.achievementKey)]);
+
+export const engagementEvents = mysqlTable("engagement_events", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  practiceSessionId: int("practiceSessionId"),
+  eventType: varchar("eventType", { length: 100 }).notNull(),
+  points: int("points").notNull(),
+  description: varchar("description", { length: 255 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => [uniqueIndex("engagement_event_unique").on(table.userId, table.eventType, table.practiceSessionId)]);

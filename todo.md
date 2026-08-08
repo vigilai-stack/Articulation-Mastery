@@ -11,3 +11,19 @@
 - [x] Implement daily reminders and milestone celebration notifications.
 - [x] Add automated tests, quality checks, documentation, AWS-ready Docker configuration, and GitHub-ready project materials.
 - [x] Verify desktop and mobile UI, save a deployment-ready checkpoint, and prepare final handoff.
+- [x] Define and implement a reusable gamification foundation with points, levels, achievements, and progression rules.
+- [x] Add a user-controlled dark-mode toggle with persisted theme preference and accessible contrast.
+- [x] Enhance guided practice with preparation cues, timed delivery, multi-take comparison, and richer coaching views.
+- [x] Validate the engagement enhancements, update automated tests and documentation, then save a release checkpoint.
+- [x] Replace the bottle-green visual system with a refined teal-first palette and coordinated high-contrast accents.
+- [x] Replace remaining legacy hardcoded colors across major learner and management pages with semantic teal theme tokens.
+- [x] Verify the persisted theme control produces distinct, accessible visual modes across public and authenticated interfaces.
+- [x] Document gamification, theme controls, and enhanced practice workflows before the final enhanced-release checkpoint.
+- [x] Replace remaining legacy palette utilities in the dashboard, landing, learner-report, progress, settings, library, and reporting pages with semantic theme classes.
+- [x] Capture verified public and authenticated-interface states in both persisted theme modes.
+- [x] Save the validated enhancement release as a new checkpoint and deliver the reusable skill package.
+- [x] Refactor Progress, Settings, Library, and Reports to semantic teal theme classes instead of legacy palette utilities.
+- [x] Exercise and record both persisted theme modes on a public and a workspace route.
+- [x] Save the validated enhancement checkpoint and deliver the reusable articulation-program skill.
+- [x] Verify both persisted theme modes on public and workspace routes, then record the visual QA evidence.
+- [x] Save the enhanced-release checkpoint and deliver the validated reusable skill package.
