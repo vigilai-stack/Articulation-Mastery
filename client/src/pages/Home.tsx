@@ -1,33 +1,12 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { startLogin } from "@/const";
+import { ArrowRight, CheckCircle2, ChevronRight, CirclePlay, Gauge, Mic2, ShieldCheck, Sparkles } from "lucide-react";
+import { useLocation } from "wouter";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+  const { isAuthenticated } = useAuth();
+  const [, navigate] = useLocation();
+  const enter = () => isAuthenticated ? navigate("/dashboard") : startLogin();
+  return <main className="landing-shell"><header className="landing-nav"><button onClick={() => navigate("/")} className="brand-mark"><span className="brand-mark__dot"/>Articulation Mastery</button><nav className="hidden items-center gap-7 text-sm text-[#b2c6be] md:flex"><a href="#method" className="hover:text-white">The method</a><a href="#experience" className="hover:text-white">The experience</a><a href="#enterprise" className="hover:text-white">For teams</a></nav><Button onClick={enter} className="landing-nav__action">{isAuthenticated ? "Open workspace" : "Sign in"}<ArrowRight className="ml-2 h-4 w-4"/></Button></header><section className="landing-hero"><div className="landing-hero__copy"><p className="eyebrow">Professional communication, practiced deliberately</p><h1 className="mt-6 font-display text-6xl leading-[.92] tracking-[-.045em] text-white sm:text-7xl lg:text-[5.6rem]">Say the thing that <em className="not-italic text-[#a5f4c9]">moves</em> the room.</h1><p className="mt-7 max-w-xl text-lg leading-8 text-[#b2c6be]">Articulation Mastery is a 28-day practice system for clearer thinking, stronger presence, and the conversations that move your work forward.</p><div className="mt-9 flex flex-wrap gap-3"><Button onClick={enter} className="premium-button px-6">Begin your practice <ArrowRight className="ml-2 h-4 w-4"/></Button><button onClick={() => document.getElementById("method")?.scrollIntoView({behavior:"smooth"})} className="inline-flex items-center px-4 text-sm text-[#d7e4de] hover:text-white"><CirclePlay className="mr-2 h-5 w-5 text-[#f4bc79]"/>See the approach</button></div><div className="mt-12 flex flex-wrap gap-x-7 gap-y-3 text-sm text-[#a5beb6]"><span className="inline-flex items-center"><CheckCircle2 className="mr-2 h-4 w-4 text-[#a5f4c9]"/>10–18 minutes a day</span><span className="inline-flex items-center"><CheckCircle2 className="mr-2 h-4 w-4 text-[#a5f4c9]"/>Structured feedback</span><span className="inline-flex items-center"><CheckCircle2 className="mr-2 h-4 w-4 text-[#a5f4c9]"/>Real work scenarios</span></div></div><div className="landing-hero__art" aria-hidden="true"><div className="art-ring art-ring--one"/><div className="art-ring art-ring--two"/><div className="art-sphere"><span>28</span><small>days</small></div><div className="art-caption art-caption--top">Clarity<br/>is a practice.</div><div className="art-caption art-caption--bottom">Your voice,<br/>with intention.</div></div></section><section id="method" className="method-section"><div><p className="eyebrow">A considered system</p><h2 className="mt-5 font-display text-4xl leading-[1.03] tracking-[-.035em] text-white sm:text-5xl">The confidence to speak starts long before the moment you’re asked to.</h2></div><div className="method-list"><article><span>01</span><div><h3>Learn the move</h3><p>Short, memorable principles for the communication moments that matter.</p></div></article><article><span>02</span><div><h3>Take a real-world practice</h3><p>Record or write a response built around a challenge you are likely to face.</p></div></article><article><span>03</span><div><h3>Refine with evidence</h3><p>Receive direct coaching across clarity, conciseness, confidence, and structure.</p></div></article></div></section><section id="experience" className="experience-section"><div className="experience-panel"><div className="experience-panel__header"><div><p className="text-sm text-[#9bb4a9]">Your next practice</p><h3>Executive summaries</h3></div><span className="rounded-full bg-[#a5f4c9] px-3 py-1 text-xs font-semibold text-[#09231b]">Day 19</span></div><p className="mt-6 text-[#b2c6be]">Lead with the decision, status, or risk—not a chronological recap. Make the requested action unmistakable.</p><div className="mt-7 rounded-xl border border-white/10 bg-white/[.035] p-4"><p className="text-xs font-semibold text-[#a5f4c9]">GUIDED PRACTICE</p><p className="mt-2 leading-7 text-[#e5efe9]">Provide a 60-second executive update on a project with one emerging risk. End with a specific request.</p></div><div className="mt-5 flex items-center justify-between"><span className="inline-flex items-center text-sm text-[#9bb4a9]"><Mic2 className="mr-2 h-4 w-4 text-[#f4bc79]"/>Your private response</span><ChevronRight className="h-5 w-5 text-[#a5f4c9]"/></div></div><div className="experience-copy"><p className="eyebrow">The workspace</p><h2 className="mt-5 font-display text-4xl leading-[1.02] tracking-[-.035em] text-white sm:text-5xl">A practice room designed to make progress visible.</h2><p className="mt-6 max-w-lg leading-8 text-[#a5beb6]">The learner workspace creates one clear focal point: today’s practice. Around it, your momentum and skill signal build a meaningful view of the work you are doing.</p><div className="mt-8 grid gap-3 sm:grid-cols-2"><div className="experience-point"><Gauge className="h-5 w-5 text-[#a5f4c9]"/><h3>Skill signal</h3><p>See the four dimensions of a compelling message take shape over time.</p></div><div className="experience-point"><Sparkles className="h-5 w-5 text-[#f4bc79]"/><h3>Specific coaching</h3><p>Turn every response into one practical adjustment for your next take.</p></div></div></div></section><section id="enterprise" className="enterprise-section"><div><p className="eyebrow">For managers and administrators</p><h2 className="mt-5 font-display text-4xl tracking-[-.035em] text-white sm:text-5xl">Build a more articulate organization, one practice at a time.</h2></div><div><p className="max-w-xl leading-8 text-[#b2c6be]">Team reporting turns practice into a responsible capability signal: completion, emerging skill gaps, learner momentum, and a portable CSV snapshot for the conversations that need it.</p><div className="mt-7 flex flex-wrap gap-3"><span className="feature-pill"><ShieldCheck className="mr-2 h-4 w-4"/>Role-aware reporting</span><span className="feature-pill"><Gauge className="mr-2 h-4 w-4"/>Capability heatmaps</span><span className="feature-pill"><ArrowRight className="mr-2 h-4 w-4"/>Export-ready views</span></div></div></section><footer className="landing-footer"><span className="brand-mark"><span className="brand-mark__dot"/>Articulation Mastery</span><p>Built for the words that shape what happens next.</p></footer></main>;
 }
