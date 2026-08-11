@@ -40,6 +40,6 @@
 - [x] Add a secure GitHub Actions deployment workflow for AWS container delivery using OpenID Connect and environment protection.
 - [x] Document AWS resources, IAM roles, GitHub environment secrets, deployment commands, health checks, rollback, and domain configuration.
 - [x] Validate CI/CD workflow syntax and deployment assets, save a release checkpoint, and synchronize the production package to GitHub.
-- [ ] Save the validated AWS CI/CD production package as a new project checkpoint.
+- [x] Save the validated AWS CI/CD production package as a new project checkpoint.
 - [ ] Commit and push the new AWS workflow, Docker, and deployment runbook assets to GitHub, then verify the remote commit.
 - [ ] Build the production container in GitHub Actions or another Docker-capable environment before enabling AWS deployment.
