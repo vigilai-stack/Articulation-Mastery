@@ -27,10 +27,12 @@
 - [x] Save the validated enhancement checkpoint and deliver the reusable articulation-program skill.
 - [x] Verify both persisted theme modes on public and workspace routes, then record the visual QA evidence.
 - [x] Save the enhanced-release checkpoint and deliver the validated reusable skill package.
-- [ ] Validate GitHub account permissions and identify or create the private Articulation Mastery repository.
-- [ ] Push the validated project source and GitHub Actions workflow to the selected repository.
-- [ ] Verify the remote repository contents and record the GitHub handoff details.
-- [ ] Connect and push the project to the confirmed private repository `vigilai-stack/Articulation-Mastery`.
-- [ ] Validate write access and push the project to `ssinha-76/Articulation-Mastery`.
-- [ ] Validate write access and push the project to the corrected repository `vigilai-stack/Articulation-Mastery`.
-- [ ] Validate and push to the now-public `vigilai-stack/Articulation-Mastery` repository.
+- [x] Validate GitHub account permissions and identify the user-designated Articulation Mastery repository.
+- [x] Push the validated project source and GitHub Actions workflow to the selected repository.
+- [x] Verify the remote repository contents and record the GitHub handoff details.
+- [x] Confirm the user-designated repository `vigilai-stack/Articulation-Mastery`; its final delivery visibility was public.
+- [x] Investigate the incorrect `ssinha-76/Articulation-Mastery` target; no push was performed because the repository was unavailable.
+- [x] Validate write access and push the project to the corrected repository `vigilai-stack/Articulation-Mastery`.
+- [x] Validate and push to the now-public `vigilai-stack/Articulation-Mastery` repository.
+- [x] Use the user-authorized GitHub credential to push the completed project and verify the remote repository contents.
+- [x] Validate the newly authorized classic GitHub token, push the project, and verify the remote main branch.
