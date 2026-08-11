@@ -1,0 +1,14 @@
+.git
+.github
+.manus-logs
+node_modules
+dist
+coverage
+*.log
+.env
+.env.*
+!.env.example
+README.md
+docs
+qa_findings.md
+todo.md

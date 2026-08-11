@@ -1,6 +1,10 @@
 # AWS Deployment Guide
 
-Articulation Mastery is prepared for deployment to AWS App Runner or Amazon ECS Fargate. The service is a single Node.js web process that serves the built React client and tRPC API from the same container. It reads the runtime port from `PORT` and does not depend on persistent local storage.
+Articulation Mastery is prepared for deployment to AWS App Runner or Amazon ECS Fargate. The service is a single Node.js web process that serves the built React client and tRPC API from the same container. It reads the runtime port from `PORT` and does not depend on persistent local storage. The production CI/CD reference implementation targets ECS Fargate; see the detailed [AWS CI/CD Runbook](AWS_CICD.md).
+
+## Independent AWS runtime prerequisite
+
+The current application uses Manus-managed OAuth and Forge services for identity, AI feedback, transcription, storage, and notifications. Those managed integrations are not automatically available outside Manus. Before sending independent AWS production traffic, replace them with independently operated providers—such as Cognito for identity, Bedrock for AI feedback, Transcribe for voice, S3 for files, and SES/SNS or EventBridge for notifications—or implement a supported integration path. Do not export or copy Manus-provided credentials into AWS.
 
 ## 1. Provision managed dependencies
 

@@ -60,7 +60,9 @@ New accounts are learners by default. Promote trusted operators to `manager` or 
 
 ## AWS deployment
 
-The repository is compatible with AWS App Runner, ECS Fargate, or Elastic Beanstalk. Provision a MySQL-compatible database such as Amazon RDS or Aurora, inject the expected environment variables through AWS Secrets Manager, and ensure the service can reach the OAuth and managed storage endpoints. The included `Dockerfile.aws` builds the client and server in the container image, and the server honors `PORT` from its runtime environment. Review the complete [AWS deployment guide](docs/AWS_DEPLOYMENT.md) before provisioning production infrastructure.
+The repository is compatible with AWS App Runner, ECS Fargate, or Elastic Beanstalk. Provision a MySQL-compatible database such as Amazon RDS or Aurora, inject the expected environment variables through AWS Secrets Manager, and ensure the service can reach the OAuth and managed storage endpoints. The included `Dockerfile.aws` builds the client and server in the container image, and the server honors `PORT` from its runtime environment. Review the [AWS deployment guide](docs/AWS_DEPLOYMENT.md) and the [AWS CI/CD runbook](docs/AWS_CICD.md) before provisioning production infrastructure.
+
+> **Important:** Manus-managed OAuth and Forge integrations are not automatically portable to an independent AWS runtime. The AWS runbook identifies the current provider migration requirements; do not copy platform-injected credentials into AWS.
 
 Required production configuration includes `DATABASE_URL`, `JWT_SECRET`, `OAUTH_SERVER_URL`, `VITE_APP_ID`, `VITE_OAUTH_PORTAL_URL`, `BUILT_IN_FORGE_API_URL`, and the corresponding Forge API keys. Do not commit `.env` files or literal credentials.
 

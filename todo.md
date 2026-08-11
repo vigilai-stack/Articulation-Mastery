@@ -36,3 +36,10 @@
 - [x] Validate and push to the now-public `vigilai-stack/Articulation-Mastery` repository.
 - [x] Use the user-authorized GitHub credential to push the completed project and verify the remote repository contents.
 - [x] Validate the newly authorized classic GitHub token, push the project, and verify the remote main branch.
+- [x] Audit the existing GitHub Actions workflow, container configuration, and AWS deployment documentation.
+- [x] Add a secure GitHub Actions deployment workflow for AWS container delivery using OpenID Connect and environment protection.
+- [x] Document AWS resources, IAM roles, GitHub environment secrets, deployment commands, health checks, rollback, and domain configuration.
+- [x] Validate CI/CD workflow syntax and deployment assets, save a release checkpoint, and synchronize the production package to GitHub.
+- [ ] Save the validated AWS CI/CD production package as a new project checkpoint.
+- [ ] Commit and push the new AWS workflow, Docker, and deployment runbook assets to GitHub, then verify the remote commit.
+- [ ] Build the production container in GitHub Actions or another Docker-capable environment before enabling AWS deployment.
